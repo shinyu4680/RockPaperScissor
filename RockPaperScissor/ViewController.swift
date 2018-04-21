@@ -8,6 +8,7 @@
 
 import UIKit
 import GameplayKit
+import AVFoundation
 
 class ViewController: UIViewController {
 
@@ -17,7 +18,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var playButton: UIButton!
     let fists = ["👊", "🖐", "✌️"] //隨機拳種陣列
     var computer = "" //預留空字串讓電腦出拳
-    let results = ["You won!", "You lost!","Draw!"] //結果陣列
+    let results = ["You win!", "You lost!","Draw!"] //結果陣列
     
     @IBOutlet weak var playerScore: UILabel! //玩家分數
     var playerScoreNumber = 0 //玩家分數數字
@@ -67,6 +68,11 @@ class ViewController: UIViewController {
         }
         playerScore.text = "\(playerScoreNumber)"
         computerScore.text = "\(computerScoreNumber)"
+        
+        let speechUtterence = AVSpeechUtterance(string: result.text!)
+        let synth = AVSpeechSynthesizer()
+        synth.speak(speechUtterence)
+        
     }
     
     @IBAction func resetButtonPress(_sender: Any ){
@@ -74,6 +80,7 @@ class ViewController: UIViewController {
         computerScoreNumber = 0
         playerScore.text = "0"
         computerScore.text = "0"
+        result.isHidden = true
     }
     
     override func viewDidLoad() {
