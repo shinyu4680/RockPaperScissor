@@ -81,6 +81,7 @@ class ViewController: UIViewController {
         playerScore.text = "0"
         computerScore.text = "0"
         result.isHidden = true
+        computerChoise.isHidden = true
     }
     
     override func viewDidLoad() {
