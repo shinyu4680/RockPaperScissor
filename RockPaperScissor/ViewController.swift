@@ -69,9 +69,10 @@ class ViewController: UIViewController {
         playerScore.text = "\(playerScoreNumber)"
         computerScore.text = "\(computerScoreNumber)"
         
-        let speechUtterence = AVSpeechUtterance(string: result.text!)
-        let synth = AVSpeechSynthesizer()
-        synth.speak(speechUtterence)
+//        let speechUtterence = AVSpeechUtterance(string: result.text!)
+//        let synth = AVSpeechSynthesizer()
+//        synth.speak(speechUtterence)
+        speech(_sender: result.text!)
         
     }
     
@@ -87,13 +88,19 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        speech(_sender: "rock! paper! scissors")
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    func speech(_sender: String){
+        let speechUtterence = AVSpeechUtterance(string: _sender)
+        let synth = AVSpeechSynthesizer()
+        synth.speak(speechUtterence)
+    }
 
 }
 
